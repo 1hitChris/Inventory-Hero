@@ -9,6 +9,6 @@ public class InventorySlotDragAndDropController : MonoBehaviour, IDropHandler
     {
         Debug.Log("OnDrop");
         eventData.pointerDrag.GetComponent<InventoryItemDragAndDropController>().droppedOnSlot = true;
-        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        eventData.pointerDrag.GetComponent<RectTransform>().transform.position = GetComponent<RectTransform>().transform.position;
     }
 }

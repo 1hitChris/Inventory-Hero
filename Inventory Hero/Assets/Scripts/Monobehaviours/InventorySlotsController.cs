@@ -12,20 +12,9 @@ public class InventorySlotsController : MonoBehaviour
     [SerializeField]
     private float tileSize = 1;
 
-    //public float width;
-    //public float height;
-
-
-
-    /*Testing stuff out
-    public GameObject inventoryPanel;*/
-
     private void Start()
     {
         GenerateGrid();
-
-        /*Testing stuff out
-        inventoryPanel = GetComponent<GameObject>();*/
     }
 
     private void GenerateGrid()
@@ -48,10 +37,6 @@ public class InventorySlotsController : MonoBehaviour
 
         //Destroys the reference since it won't be needed anymore
         Destroy(referenceTile);
-
-        //Set the position of the whole grid
-        //transform.position = new Vector2(width, height);
-        
         
     }
 }

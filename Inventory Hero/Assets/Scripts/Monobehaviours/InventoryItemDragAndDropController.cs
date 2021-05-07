@@ -17,6 +17,9 @@ public class InventoryItemDragAndDropController : MonoBehaviour, IPointerDownHan
         defaultPos = transform.position;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        canvas = GetComponent<Canvas>();
+        GameObject canvasObject = GameObject.Find("InventoryUI");
+        canvas = canvasObject.GetComponent<Canvas>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
