@@ -101,6 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb0ba7005ed6c041a36c9e24c17ae47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlotObject: {fileID: 0}
+  image: {fileID: 4237528367772541351}
   canvas: {fileID: 0}
   droppedOnSlot: 0

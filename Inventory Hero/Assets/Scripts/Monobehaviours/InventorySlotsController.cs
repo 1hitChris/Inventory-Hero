@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class InventorySlotsController : MonoBehaviour
 {
-    [SerializeField]
-    private int rows = 5;
-    [SerializeField]
-    private int columns = 5;
-    [SerializeField]
-    private float tileSize = 1;
+    [SerializeField] private int rows = 5;
+    [SerializeField] private int columns = 5;
+    [SerializeField] private float tileSize = 1;
+
+    
 
     private void Start()
     {
@@ -35,8 +34,10 @@ public class InventorySlotsController : MonoBehaviour
             }
         }
 
+        
         //Destroys the reference since it won't be needed anymore
         Destroy(referenceTile);
         
     }
+   
 }

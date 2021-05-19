@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7860ce684c7f5424899f3b571f5a73d2, type: 3}
+  m_Name: MainCharacterStats
+  m_EditorClassIdentifier: 
+  setManually: 0
+  saveDataOnClose: 0
+  maxHealth: 0
+  currentHealth: 0
+  maxMana: 0
+  currentMana: 0
+  maxWealth: 0
+  currentWealth: 0
+  basePhysicalDamage: 0
+  currentPhysicalDamage: 0
+  baseMagicDamage: 0
+  currentMagicDamage: 0
+  baseArmor: 0
+  currentArmor: 0
+  baseMagicResistance: 0
+  currentMagicResistance: 0
+  charExperience: 0
+  neededExperienceToLevel: 100
+  charLevel: 0
+  charLevelUps: []
