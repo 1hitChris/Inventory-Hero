@@ -66,7 +66,7 @@ public class CharacterStat_SO : ScriptableObject
 
     public void ApplyHealth(int healthAmount)
     {
-        if (currentHealth+healthAmount > maxHealth)
+        if (currentHealth + healthAmount > maxHealth)
         {
             currentHealth = maxHealth;
         }
@@ -106,58 +106,58 @@ public class CharacterStat_SO : ScriptableObject
         }
     }
 
-    public void EquipWeapon(ItemPickUp weaponPickUp, Inventory charInventory, GameObject weaponSlot)
-    {
-        weapon = weaponPickUp;
-        currentPhysicalDamage = basePhysicalDamage + weapon.itemDefinition.itemAmount;
-        currentMagicDamage = baseMagicDamage + weapon.itemDefinition.itemAmount;
-    }
-
-    public void EquipArmor(ItemPickUp armorPickUp, Inventory charInventory)
-    {
-        switch (armorPickUp.itemDefinition.itemArmorSubType)
-        {
-            case ItemArmorSubType.NONE:
-                break;
-            case ItemArmorSubType.HELMET:
-                helmet = armorPickUp;
-                currentArmor += armorPickUp.itemDefinition.itemAmount;
-                currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
-                break;
-            case ItemArmorSubType.CHEST:
-                chestArmor = armorPickUp;
-                currentArmor += armorPickUp.itemDefinition.itemAmount;
-                currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
-                break;
-            case ItemArmorSubType.SHOULDER:
-                shoulder = armorPickUp;
-                currentArmor += armorPickUp.itemDefinition.itemAmount;
-                currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
-                break;
-            case ItemArmorSubType.GLOVES:
-                gloves = armorPickUp;
-                currentArmor += armorPickUp.itemDefinition.itemAmount;
-                currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
-                break;
-            case ItemArmorSubType.BELT:
-                belt = armorPickUp;
-                currentArmor += armorPickUp.itemDefinition.itemAmount;
-                currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
-                break;
-            case ItemArmorSubType.LEGS:
-                legArmor = armorPickUp;
-                currentArmor += armorPickUp.itemDefinition.itemAmount;
-                currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
-                break;
-            case ItemArmorSubType.BOOTS:
-                boots = armorPickUp;
-                currentArmor += armorPickUp.itemDefinition.itemAmount;
-                currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
-                break;
-            default:
-                break;
-        }
-    }
+    /*   public void EquipWeapon(ItemPickUp weaponPickUp, Inventory charInventory, GameObject weaponSlot)
+       {
+           weapon = weaponPickUp;
+           currentPhysicalDamage = basePhysicalDamage + weapon.itemDefinition.itemAmount;
+           currentMagicDamage = baseMagicDamage + weapon.itemDefinition.itemAmount;
+       }
+    */
+    /* public void EquipArmor(ItemPickUp armorPickUp, Inventory charInventory)
+     {
+         switch (armorPickUp.itemDefinition.itemArmorSubType)
+         {
+             case ItemArmorSubType.NONE:
+                 break;
+             case ItemArmorSubType.HELMET:
+                 helmet = armorPickUp;
+                 currentArmor += armorPickUp.itemDefinition.itemAmount;
+                 currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
+                 break;
+             case ItemArmorSubType.CHEST:
+                 chestArmor = armorPickUp;
+                 currentArmor += armorPickUp.itemDefinition.itemAmount;
+                 currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
+                 break;
+             case ItemArmorSubType.SHOULDER:
+                 shoulder = armorPickUp;
+                 currentArmor += armorPickUp.itemDefinition.itemAmount;
+                 currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
+                 break;
+             case ItemArmorSubType.GLOVES:
+                 gloves = armorPickUp;
+                 currentArmor += armorPickUp.itemDefinition.itemAmount;
+                 currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
+                 break;
+             case ItemArmorSubType.BELT:
+                 belt = armorPickUp;
+                 currentArmor += armorPickUp.itemDefinition.itemAmount;
+                 currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
+                 break;
+             case ItemArmorSubType.LEGS:
+                 legArmor = armorPickUp;
+                 currentArmor += armorPickUp.itemDefinition.itemAmount;
+                 currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
+                 break;
+             case ItemArmorSubType.BOOTS:
+                 boots = armorPickUp;
+                 currentArmor += armorPickUp.itemDefinition.itemAmount;
+                 currentMagicResistance += armorPickUp.itemDefinition.itemAmount;
+                 break;
+             default:
+                 break;
+         }
+     }*/
 
     #endregion
 
@@ -218,117 +218,117 @@ public class CharacterStat_SO : ScriptableObject
         return previousWeaponSame;
     }
 
-    public bool UnEquipArmor(ItemPickUp armorPickUp, Inventory charInventory)
-    {
-        bool previousArmorSame = false;
+    /* public bool UnEquipArmor(ItemPickUp armorPickUp, Inventory charInventory)
+     {
+         bool previousArmorSame = false;
 
-        switch (armorPickUp.itemDefinition.itemArmorSubType)
-        {
-            case ItemArmorSubType.NONE:
-                break;
-            case ItemArmorSubType.HELMET:
-                if (helmet != null)
-                {
-                    if (helmet == armorPickUp)
-                    {
-                        previousArmorSame = true;
-                    }
+         switch (armorPickUp.itemDefinition.itemArmorSubType)
+         {
+             case ItemArmorSubType.NONE:
+                 break;
+             case ItemArmorSubType.HELMET:
+                 if (helmet != null)
+                 {
+                     if (helmet == armorPickUp)
+                     {
+                         previousArmorSame = true;
+                     }
 
-                    currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
-                    currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
-                    helmet = null;
-                }
-                break;
-            case ItemArmorSubType.CHEST:
-                if (chestArmor != null)
-                {
-                    if (chestArmor == armorPickUp)
-                    {
-                        previousArmorSame = true;
-                    }
+                     currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
+                     currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
+                     helmet = null;
+                 }
+                 break;
+             case ItemArmorSubType.CHEST:
+                 if (chestArmor != null)
+                 {
+                     if (chestArmor == armorPickUp)
+                     {
+                         previousArmorSame = true;
+                     }
 
-                    currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
-                    currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
-                    chestArmor = null;
-                }
-                break;
-            case ItemArmorSubType.SHOULDER:
+                     currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
+                     currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
+                     chestArmor = null;
+                 }
+                 break;
+             case ItemArmorSubType.SHOULDER:
 
-                if (shoulder != null)
-                {
-                    if (shoulder == armorPickUp)
-                    {
-                        previousArmorSame = true;
-                    }
+                 if (shoulder != null)
+                 {
+                     if (shoulder == armorPickUp)
+                     {
+                         previousArmorSame = true;
+                     }
 
-                    currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
-                    currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
-                    shoulder = null;
-                }
-                break;
-            case ItemArmorSubType.GLOVES:
-                if (gloves != null)
-                {
-                    if (gloves == armorPickUp)
-                    {
-                        previousArmorSame = true;
-                    }
+                     currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
+                     currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
+                     shoulder = null;
+                 }
+                 break;
+             case ItemArmorSubType.GLOVES:
+                 if (gloves != null)
+                 {
+                     if (gloves == armorPickUp)
+                     {
+                         previousArmorSame = true;
+                     }
 
-                    currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
-                    currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
-                    gloves = null;
-                }
-                break;
-            case ItemArmorSubType.BELT:
-                if (belt != null)
-                {
-                    if (belt == armorPickUp)
-                    {
-                        previousArmorSame = true;
-                    }
+                     currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
+                     currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
+                     gloves = null;
+                 }
+                 break;
+             case ItemArmorSubType.BELT:
+                 if (belt != null)
+                 {
+                     if (belt == armorPickUp)
+                     {
+                         previousArmorSame = true;
+                     }
 
-                    currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
-                    currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
-                    belt = null;
-                }
-                break;
-            case ItemArmorSubType.LEGS:
-                if (legArmor != null)
-                {
-                    if (legArmor == armorPickUp)
-                    {
-                        previousArmorSame = true;
-                    }
+                     currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
+                     currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
+                     belt = null;
+                 }
+                 break;
+             case ItemArmorSubType.LEGS:
+                 if (legArmor != null)
+                 {
+                     if (legArmor == armorPickUp)
+                     {
+                         previousArmorSame = true;
+                     }
 
-                    currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
-                    currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
-                    legArmor = null;
-                }
-                break;
-            case ItemArmorSubType.BOOTS:
-                if (boots != null)
-                {
-                    if (boots == armorPickUp)
-                    {
-                        previousArmorSame = true;
-                    }
+                     currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
+                     currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
+                     legArmor = null;
+                 }
+                 break;
+             case ItemArmorSubType.BOOTS:
+                 if (boots != null)
+                 {
+                     if (boots == armorPickUp)
+                     {
+                         previousArmorSame = true;
+                     }
 
-                    currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
-                    currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
-                    boots = null;
-                }
-                break;
-            default:
-                break;
-        }
-        return previousArmorSame;
-    }
+                     currentPhysicalDamage -= armorPickUp.itemDefinition.itemAmount;
+                     currentMagicResistance -= armorPickUp.itemDefinition.itemAmount;
+                     boots = null;
+                 }
+                 break;
+             default:
+                 break;
+         }
+         return previousArmorSame;
+     }*/
 
     #endregion
 
     #region Character Level Up and Death
 
-    private void Death()
+    public void Death()
     {
         Debug.Log("You're Dead");
         //Call to Game manager for death state

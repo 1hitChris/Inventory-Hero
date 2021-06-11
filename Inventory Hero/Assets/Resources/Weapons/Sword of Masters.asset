@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f901cbaa70f17cd49b979e391576fbfe, type: 3}
-  m_Name: Shuriken
+  m_Name: Sword of Masters
   m_EditorClassIdentifier: 
-  itemName: Shuriken
-  itemIcon: {fileID: 21300000, guid: dd761e4f7ec290b489961f2d4b8c9833, type: 3}
+  itemName: Sword of Mastters
+  itemIcon: {fileID: 21300000, guid: 01680927d31de2941bafdbe99d9c6a7d, type: 3}

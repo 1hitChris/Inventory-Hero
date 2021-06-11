@@ -2,75 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickUp : MonoBehaviour
+public class ItemPickUp : Interactable
 {
-    public ItemPickUp_SO itemDefinition;
+    public ItemPickUp_SO item;
 
-    public CharacterStats charStats;
-    private Inventory charInventory;
 
-    private GameObject foundStats;
-
-    #region Constructors
-
-    public ItemPickUp()
+    public override void Interact()
     {
-        charInventory = Inventory.instance;
+        base.Interact();
     }
 
-    #endregion
+    /* private void OnTriggerStay2D(Collider2D collision)
+     {
+         if (Input.GetKeyDown(KeyCode.Z))
+         {
+             bool wasPickedUp = Inventory.instance.Add(item);
 
-    private void Start()
-    {
-        if (charStats != null)
-        {
-            foundStats = GameObject.FindGameObjectWithTag("Player");
-            charStats = foundStats.GetComponent<CharacterStats>();
-        }
-    }
+             if (wasPickedUp)
+             {
+                 Debug.Log(item.name + " pick up!");
 
-    private void StoreItemInInventory()
-    {
-        charInventory.StoreItem(this);
-    }
+                 Destroy(gameObject);
+             }
+         }
+     }*/
 
-    public void UseItem()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (itemDefinition.itemType)
-        {
-            case ItemTypeDefinitions.HEALTH:
-                charStats.ApplyHealth(itemDefinition.itemAmount);
-                break;
-            case ItemTypeDefinitions.WEALTH:
-                charStats.GiveWealth(itemDefinition.itemAmount);
-                break;
-            case ItemTypeDefinitions.MANA:
-                charStats.ApplyMana(itemDefinition.itemAmount);
-                break;
-            case ItemTypeDefinitions.WEAPON:
-                charStats.ChangeWeapon(this);
-                break;
-            case ItemTypeDefinitions.ARMOR:
-                charStats.ChangeArmor(this);
-                break;
-            default:
-                break;
-        }
-    }
+        bool wasPickedUp = Inventory.instance.Add(item);
 
-    //Probably won't need this part later
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
+        if (wasPickedUp)
         {
-            if (itemDefinition.isStorable)
-            {
-                StoreItemInInventory();
-            }
-        }
-        else
-        {
-            UseItem();
+            Debug.Log(item.name + " pick up!");
+
+            Destroy(gameObject);
         }
     }
 }

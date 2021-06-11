@@ -10,7 +10,6 @@ public class InventoryItemDragAndDropController : MonoBehaviour, IPointerDownHan
     [SerializeField] AudioClip clickSound;
     [SerializeField] AudioClip dropSound;
     [SerializeField] new AudioSource audio;
-    //public InventorySlotDragAndDropController itemSlotColor;
 
     public Canvas canvas;
     private RectTransform rectTransform;
@@ -21,9 +20,6 @@ public class InventoryItemDragAndDropController : MonoBehaviour, IPointerDownHan
     private void Awake()
     {
         audio = GetComponent<AudioSource>();
-        //itemSlotColor = GetComponent<InventorySlotDragAndDropController>();
-        //GameObject itemSlots = GameObject.Find("Inventory Slots");
-        //itemSlotColor = itemSlots.GetComponentInChildren<InventorySlotDragAndDropController>();
         defaultPos = transform.position;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();

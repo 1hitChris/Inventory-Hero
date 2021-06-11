@@ -2,53 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnItem : MonoBehaviour, ISpawns
+public class SpawnItem : MonoBehaviour
 {
-    public ItemPickUp_SO[] itemDefinitions;
+    public ItemPickUp_SO[] items;
 
-    private int whichToSpawn = 0;
-    private int totalSpawnWeight = 0;
-    private int chosen = 0;
+    public int index;
 
-    public Transform parent;
-    public int yPos = 1300;
-    public int xPos = 1000;
-    public Rigidbody itemSpawned { get; set; }
-    public Renderer itemMaterial { get; set; }
-    public ItemPickUp itemType { get; set; }
-    public AudioSource clickSound;
-
-    public void CreateSpawn()
+    private void Start()
     {
-        clickSound.Play();
-        foreach (ItemPickUp_SO ip in itemDefinitions)
-        {
-            whichToSpawn += ip.spawnChanceWeight;
-            if (whichToSpawn >= chosen)
-            {
-                itemSpawned = Instantiate(ip.itemSpawnObject, new Vector3(transform.position.x + xPos, transform.position.y + yPos, 0), Quaternion.identity, parent);
-
-                itemMaterial = itemSpawned.GetComponent<Renderer>();
-                itemMaterial.material = ip.itemMaterial;
-
-                itemType = itemSpawned.GetComponent<ItemPickUp>();
-                itemType.itemDefinition = ip;
-                break;
-            }
-        }
+        index = Random.Range(0, items.Length);
     }
 
-    void Start()
+    private void Update()
     {
-        clickSound = GetComponent<AudioSource>();
-        parent = parent.GetComponent<Transform>();
-        parent.transform.SetParent(GameObject.Find("Inventory Items").transform);
-
-        foreach (ItemPickUp_SO ip in itemDefinitions)
-        {
-            totalSpawnWeight += ip.spawnChanceWeight;
-        }
+        index = Random.Range(0, items.Length);
     }
 
-
+    public void GetRandomItemFromArray(ItemPickUp_SO items)
+    {
+        Inventory.instance.Add(items);
+    }
+    public void SpawnRandomItem()
+    {
+        GetRandomItemFromArray(items[index]);
+    }
 }

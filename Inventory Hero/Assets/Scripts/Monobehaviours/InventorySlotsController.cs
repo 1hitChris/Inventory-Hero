@@ -2,42 +2,43 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventorySlotsController : MonoBehaviour
 {
-    [SerializeField] private int rows = 5;
-    [SerializeField] private int columns = 5;
-    [SerializeField] private float tileSize = 1;
+    ItemPickUp_SO item;
+    public Image icon;
+    public Button removeButton;
 
-    
 
-    private void Start()
+    public void AddItem(ItemPickUp_SO newItem)
     {
-        GenerateGrid();
+        item = newItem;
+
+        icon.sprite = item.itemIcon;
+        icon.enabled = true;
+        removeButton.interactable = true;
     }
 
-    private void GenerateGrid()
+    public void ClearSlot()
     {
-        GameObject referenceTile = (GameObject)Instantiate(Resources.Load("InventorySlot"));
+        item = null;
 
-        //Creating the grid, changes depending on how big you want the rows and column
-        for (int row = 0; row < rows; row++)
+        icon.sprite = null;
+        icon.enabled = false;
+        removeButton.interactable = false;
+    }
+
+    public void OnRemoveButton()
+    {
+        Inventory.instance.Remove(item);
+    }
+
+    public void UseItem()
+    {
+        if (item != null)
         {
-            for (int column = 0; column < columns; column++)
-            {
-                GameObject tile = (GameObject)Instantiate(referenceTile, transform);
-
-                float posX = column * tileSize;
-                float posY = row * -tileSize;
-
-                tile.transform.position = new Vector3(posX, posY, 0);
-            }
+            item.Use();
         }
-
-        
-        //Destroys the reference since it won't be needed anymore
-        Destroy(referenceTile);
-        
     }
-   
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotDragAndDropController : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlotDragAndDropController : MonoBehaviour, IDropHandler //IPointerEnterHandler, IPointerExitHandler
 {
-    public Image image;
+    //public Image image;
 
     private void Start()
     {
-        image.GetComponent<Image>();
-        image.color = new Color32(125, 90, 50, 100);
+        /*image.GetComponent<Image>();
+        image.color = new Color32(125, 90, 50, 100);*/
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -20,7 +20,7 @@ public class InventorySlotDragAndDropController : MonoBehaviour, IDropHandler, I
         eventData.pointerDrag.GetComponent<RectTransform>().transform.position = GetComponent<RectTransform>().transform.position;
     }
     //When mouse pointer enters the slots boundary it changes colors
-    public void OnPointerEnter(PointerEventData eventData)
+   /* public void OnPointerEnter(PointerEventData eventData)
     {
         image.color = new Color32(175, 130, 90, 100);
     }
@@ -28,7 +28,7 @@ public class InventorySlotDragAndDropController : MonoBehaviour, IDropHandler, I
     public void OnPointerExit(PointerEventData eventData)
     {
         image.color = new Color32(125, 90, 50, 100);
-    }
+    }*/
 
 
 }

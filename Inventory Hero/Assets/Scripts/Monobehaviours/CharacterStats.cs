@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    public CharacterStat_SO  characterDefinition;
+    public CharacterStat_SO characterDefinition;
     public Inventory charInv;
     public GameObject characterWeaponSlot;
 
@@ -48,8 +48,8 @@ public class CharacterStats : MonoBehaviour
 
     private void Update()
     {
-       /* if (Input.GetMouseButtonDown(2))
-            characterDefinition.saveCharacterData();*/
+        /* if (Input.GetMouseButtonDown(2))
+             characterDefinition.saveCharacterData();*/
     }
 
     #endregion
@@ -83,6 +83,12 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(int amount)
     {
         characterDefinition.TakeDamage(amount);
+        amount = characterDefinition.currentHealth;
+        if (characterDefinition.currentHealth <= 0)
+        {
+            characterDefinition.Death();
+        }
+
     }
 
     public void UseMana(int manaCost)
@@ -103,16 +109,16 @@ public class CharacterStats : MonoBehaviour
     {
         if (!characterDefinition.UnEquipWeapon(weaponPickUp, charInv, characterWeaponSlot))
         {
-            characterDefinition.EquipWeapon(weaponPickUp, charInv, characterWeaponSlot);
+            // characterDefinition.EquipWeapon(weaponPickUp, charInv, characterWeaponSlot);
         }
     }
 
     public void ChangeArmor(ItemPickUp armorPickUp)
     {
-        if (!characterDefinition.UnEquipArmor(armorPickUp, charInv))
-        {
-            characterDefinition.EquipArmor(armorPickUp, charInv);
-        }
+        /*  if (!characterDefinition.UnEquipArmor(armorPickUp, charInv))
+          {
+              characterDefinition.EquipArmor(armorPickUp, charInv);
+          }*/
     }
 
     #endregion
@@ -140,6 +146,7 @@ public class CharacterStats : MonoBehaviour
     }
 
     #endregion
+
 
 
 }
